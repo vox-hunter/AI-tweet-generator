@@ -40,7 +40,7 @@ After filling in these fields, click the "Generate Tweet" button. The applicatio
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/vox-hunter/AI-Tweet-Generator/blob/main/CONTRIBUTING) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/vox-hunter/AI-Tweet-Generator/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
