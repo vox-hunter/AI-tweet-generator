@@ -10,5 +10,7 @@ with st.form("tweet_form"):
     generate_button = st.form_submit_button("Generate Tweet")
 
 if generate_button:
-    tweet = fetch(topic, mood, style)
-    st.write(tweet)
+    with st.spinner("Generating tweet..."):
+        tweet = fetch(topic, mood, style)
+        st.success("Tweet generated!")
+        st.write(tweet)
