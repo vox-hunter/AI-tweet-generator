@@ -16,17 +16,17 @@ You need to have Python installed on your machine. You can download Python from 
 
 You can install these packages using pip:
 
-\```bash
+```bash
 pip install -r requirements.txt
-\```
+```
 
 ### Running the Application
 
 To run the application, navigate to the project directory in your terminal and run the following command:
 
-\```bash
+```bash
 streamlit run main.py
-\```
+```
 
 ## Using the Tweet Generator
 
@@ -40,7 +40,7 @@ After filling in these fields, click the "Generate Tweet" button. The applicatio
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://github.com/vox-hunter/AI-Tweet-Generator/blob/main/CONTRIBUTING) for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](https://github.com/vox-hunter/AI-Tweet-Generator/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## License
 
