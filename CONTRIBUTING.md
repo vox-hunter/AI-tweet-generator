@@ -12,9 +12,9 @@ If this is something you think you can fix, then fork the repository and create 
 
 A good branch name would be (where issue #325 is the ticket you're working on):
 
-\```bash
+```bash
 git checkout -b feature/325-add-button
-\```
+```
 
 ## Get the test suite running
 
