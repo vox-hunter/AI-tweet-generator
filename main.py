@@ -3,6 +3,7 @@ import streamlit as st
 import time
 
 st.title("Tweet Generator")
+st.divider()
 
 with st.form("tweet_form"):
     topic = st.text_input("Enter the topic of the tweet")
@@ -12,7 +13,10 @@ with st.form("tweet_form"):
 
 if generate_button:
     with st.spinner("Generating tweet..."):
-        tweet = fetch(topic, mood, style)
+        try:
+            tweet = fetch(topic, mood, style)
+        except KeyError:
+            st.error("An error occurred while generating the tweet. Please try again.")
         def stream_data():
             for word in tweet.split(" "):
                 yield word + " "
