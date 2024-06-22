@@ -16,7 +16,7 @@ if generate_button:
         def stream_data():
             for word in tweet.split(" "):
                 yield word + " "
-                time.sleep(0.1)  # Adjust the sleep time to control the speed of the stream
+                time.sleep(0.05)  # Adjust the sleep time to control the speed of the stream
         st.success("Tweet generated!")
         st.write_stream(stream_data())
 
