@@ -4,10 +4,17 @@ import time
 import streamlit_authenticator as stauth
 import yaml
 from yaml.loader import SafeLoader
+import os
 
-# Load the configuration file
-with open('config.yaml') as file:
-    config = yaml.load(file, Loader=SafeLoader)
+# Load the config.yaml file
+config_path = 'config.yaml'
+
+# Read the YAML file
+if os.path.exists(config_path):
+    with open(config_path) as file:
+        config = yaml.load(file, Loader=SafeLoader)
+else:
+    st.error("Configuration file not found. Please check the path.")
 
 authenticator = stauth.Authenticate(
     config['credentials'],
