@@ -10,15 +10,18 @@ import time
 # logging.basicConfig(level=logging.INFO)
 
 # create an OAuth2Component instance
-CLIENT_ID = "541107227366-es3sgd8on1fgivcv3mu5rm5ocdbbr884.apps.googleusercontent.com"
-CLIENT_SECRET = "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"
-AUTHORIZE_ENDPOINT = "https://accounts.google.com/o/oauth2/v2/auth"
-TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
-REVOKE_ENDPOINT = "https://oauth2.googleapis.com/revoke"
+CLIENT_ID = st.secrets["google"]["CLIENT_ID"]
+CLIENT_SECRET = st.secrets["google"]["CLIENT_SECRET"]
+AUTHORIZE_ENDPOINT = st.secrets["google"]["AUTHORIZE_ENDPOINT"]
+TOKEN_ENDPOINT = st.secrets["google"]["TOKEN_ENDPOINT"]
+REVOKE_ENDPOINT = st.secrets["google"]["REVOKE_ENDPOINT"]
 
 if "auth" not in st.session_state:
     # create a button to start the OAuth2 flow
     oauth2 = OAuth2Component(CLIENT_ID, CLIENT_SECRET, AUTHORIZE_ENDPOINT, TOKEN_ENDPOINT, TOKEN_ENDPOINT, REVOKE_ENDPOINT)
+    st.title("Tweet Generator")
+    st.divider()
+    st.write("Please login to continue.")
     result = oauth2.authorize_button(
         name="Continue with Google",
         icon="https://www.google.com.tw/favicon.ico",
