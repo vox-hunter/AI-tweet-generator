@@ -1,8 +1,10 @@
 import streamlit as st
 from streamlit_oauth import OAuth2Component
-import os
 import base64
 import json
+from fetch import fetch
+import time
+
 
 # import logging
 # logging.basicConfig(level=logging.INFO)
@@ -42,9 +44,29 @@ if "auth" not in st.session_state:
         st.session_state["token"] = result["token"]
         st.rerun()
 else:
-    st.write("You are logged in!")
-    st.write(st.session_state["auth"])
-    st.write(st.session_state["token"])
+    st.title("Tweet Generator")
+    st.divider()
+    with st.form("tweet_form"):
+        topic = st.text_input("Enter the topic of the tweet")
+        mood = st.text_input("Enter the mood of the tweet")
+        style = st.text_input("Enter the style of the tweet")
+        generate_button = st.form_submit_button("Generate Tweet")
+
+        if generate_button:
+            with st.spinner("Generating tweet..."):
+                try:
+                    tweet = fetch(topic, mood, style)
+                except KeyError:
+                    st.error("An error occurred while generating the tweet. Please try again.")
+                else:
+                    def stream_data():
+                        for word in tweet.split(" "):
+                            yield word + " "
+                            time.sleep(0.05)  # Adjust the sleep time to control the speed of the stream
+                    st.success("Tweet generated!")
+                    st.write("".join(stream_data()))
+
+                    st.markdown(f'[Post Tweet](https://twitter.com/intent/tweet?text={tweet})')
     if st.button("Logout"):
         del st.session_state["auth"]
         del st.session_state["token"]
