@@ -66,7 +66,7 @@ else:
                     st.success("Tweet generated!")
                     st.write("".join(stream_data()))
 
-                    st.markdown(f'[Post Tweet](https://twitter.com/intent/tweet?text={tweet})')
+                    st.link_button("Post Tweet", "https://twitter.com/intent/tweet?text={tweet}")
     if st.button("Logout"):
         del st.session_state["auth"]
         del st.session_state["token"]
