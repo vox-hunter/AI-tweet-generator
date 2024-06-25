@@ -65,7 +65,7 @@ else:
                     def stream_data():
                         for word in tweet.split(" "):
                             yield word + " "
-                            time.sleep(0.05)  # Adjust the sleep time to control the speed of the stream
+                            time.sleep(0.7)  # Adjust the sleep time to control the speed of the stream
                     st.success("Tweet generated!")
                     st.write("".join(stream_data()))
 
