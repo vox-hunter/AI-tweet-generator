@@ -5,6 +5,8 @@ import json
 from fetch import fetch
 import time
 
+# Declare Maintenance
+maintenance = False
 
 # import logging
 # logging.basicConfig(level=logging.INFO)
@@ -47,6 +49,10 @@ if "auth" not in st.session_state:
         st.session_state["token"] = result["token"]
         st.rerun()
 else:
+    if maintenance:
+        st.title("Tweet Generator")
+        st.write("The application is currently under maintenance. Please try again later.")
+        st.stop()
     st.title("Tweet Generator")
     st.divider()
     with st.form("tweet_form"):
