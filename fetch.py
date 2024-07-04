@@ -26,7 +26,11 @@ def fetch(topic, mood, style, limit=280):
   response = model.generate_content(
     f"input: Generate a tweet no more than {limit} characters. (includes spaces)\nTopic of the tweet : {topic}\nMood: {mood}\nTweet style: Like {style}"
   )
-  if len(response.text) > 280:
+  if (limit == 280) and (len(response.text) > 280):
+    response = model.generate_content(
+      f"input: Generate a tweet no more than {limit} characters. (includes spaces)\nTopic of the tweet : {topic}\nMood: {mood}\nTweet style: Like {style}"
+    )
+  if (limit == 25000) and (len(response.text) > 25000):
     response = model.generate_content(
       f"input: Generate a tweet no more than {limit} characters. (includes spaces)\nTopic of the tweet : {topic}\nMood: {mood}\nTweet style: Like {style}"
     )
