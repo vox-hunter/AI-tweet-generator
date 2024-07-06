@@ -36,12 +36,29 @@ def fetch(topic, mood, style, limit=280):
     )
   return response.text
 
+def improve(tweet, prompt, limit=280):
+  response = model.generate_content(
+    f"input: Improve the following tweet no more than {limit} characters. (includes spaces)\nPrompt: {prompt}\nTweet: {tweet}"
+  )
+  if (limit == 280) and (len(response.text) > 280):
+    response = model.generate_content(
+      f"input: Improve the following tweet no more than {limit} characters. (includes spaces)\nPrompt: {prompt}\nTweet: {tweet}"
+    )
+  if (limit == 25000) and (len(response.text) > 25000):
+    response = model.generate_content(
+      f"input: Improve the following tweet no more than {limit} characters. (includes spaces)\nPrompt: {prompt}\nTweet: {tweet}"
+    )
+  return response.text
+
 def main():
     topic = input("Enter the topic of the tweet: ")
     mood = input("Enter the mood of the tweet: ")
     style = input("Enter the style of the tweet: ")
     tweet = fetch(topic, mood, style)
     print(tweet)
+    prompt = input("How do you want to improve the tweet? ")
+    improved_tweet = improve(tweet, prompt)
+    print(improved_tweet)
 
 if __name__ == "__main__":
     main()
