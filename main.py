@@ -7,17 +7,15 @@ import time
 import urllib.parse
 
 
-def improve_tweet(tweet, limit=280):
+def improve_tweet(tweet: str, limit=280):
     improvement = st.text_input("How do you want to improve this tweet?")
     if improvement:
-        on = st.button("Improve!")
-        if on:
-            if limit == 25000:
-                improved_tweet = improve(tweet, improvement, 25000)
-                return improved_tweet
-            else:
-                improved_tweet = improve(tweet, improvement)
-                return improved_tweet
+        if limit == 25000:
+            improved_tweet = improve(tweet, improvement, 25000)
+            return improved_tweet
+        else:
+            improved_tweet = improve(tweet, improvement)
+            return improved_tweet
     else:
         return None
     
@@ -56,45 +54,45 @@ def main():
                         if tweet:
                             st.success("Tweet generated!")
                         st.write(tweet)
-    improved_tweet = improve_tweet(tweet, 25000)
-    if improved_tweet != None:
-        tweet = improved_tweet
-        st.write(tweet)
-    encoded_tweet = urllib.parse.quote(tweet)
-    tweet_url = f"https://twitter.com/intent/tweet?text={encoded_tweet}"
-    button_css = """
-    <style>
-    .tweet-button {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-        text-decoration: none;
-        outline: none;
-        color: #fff;
-        background-color: #000;
-        border: 2px solid transparent;
-        border-color: #565E5F;
-        border-radius: 5px;
-        transition: border-color 0.3s;
-    }
-    .tweet-button:hover {
-        border-color: #fff;
-    }
-    .tweet-button:active {
-        border-color: #fff;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
-    }
-    </style>
-    """
-    
-    button_html = f"""
-    <a href="{tweet_url}" target="_blank" class="tweet-button">Post Tweet</a>
-    """
-    
-    st.markdown(button_css + button_html, unsafe_allow_html=True)
+                        improved_tweet = improve_tweet(tweet, 25000)
+                        st.write(improved_tweet)
+                        if improved_tweet:
+                            tweet = improved_tweet
+                        encoded_tweet = urllib.parse.quote(tweet)
+                        tweet_url = f"https://twitter.com/intent/tweet?text={encoded_tweet}"
+                        button_css = """
+                        <style>
+                        .tweet-button {
+                            display: inline-block;
+                            padding: 10px 20px;
+                            font-size: 16px;
+                            cursor: pointer;
+                            text-align: center;
+                            text-decoration: none;
+                            outline: none;
+                            color: #fff;
+                            background-color: #000;
+                            border: 2px solid transparent;
+                            border-color: #565E5F;
+                            border-radius: 5px;
+                            transition: border-color 0.3s;
+                        }
+                        .tweet-button:hover {
+                            border-color: #fff;
+                        }
+                        .tweet-button:active {
+                            border-color: #fff;
+                            box-shadow: 0 5px #666;
+                            transform: translateY(4px);
+                        }
+                        </style>
+                        """
+                        
+                        button_html = f"""
+                        <a href="{tweet_url}" target="_blank" class="tweet-button">Post Tweet</a>
+                        """
+                        
+                        st.markdown(button_css + button_html, unsafe_allow_html=True)
 
 # Declare Maintenance
 maintenance = False  # Set to True to enable maintenance mode
@@ -106,7 +104,6 @@ if maintenance == True:
 else:
     # import logging
     # logging.basicConfig(level=logging.INFO)
-
     # create an OAuth2Component instance
     CLIENT_ID = st.secrets["google"]["CLIENT_ID"]
     CLIENT_SECRET = st.secrets["google"]["CLIENT_SECRET"]
