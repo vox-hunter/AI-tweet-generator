@@ -35,6 +35,7 @@ The Tweet Generator has three input fields:
 - Topic: Enter the topic of the tweet.
 - Mood: Enter the mood of the tweet.
 - Style: Enter the style of the tweet.
+- If you are a X premium user, make sure to toggle the premium limit. It changes the tweet limit from 280 characters to 25,000 characters
 
 After filling in these fields, click the "Generate Tweet" button. The application will generate a tweet based on your inputs and display it on the screen. You can then post the generated tweet to Twitter by clicking the "Post Tweet" button.
 
@@ -45,3 +46,8 @@ Please read [CONTRIBUTING.md](https://github.com/vox-hunter/AI-Tweet-Generator/b
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/vox-hunter/AI-Tweet-Generator/blob/main/LICENSE) file for details
+
+## Credits
+- [Vox](https://github.com/vox-hunter)
+- Gemini 1.5 Flash LLM
+- Streamlit for deploying
