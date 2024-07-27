@@ -96,7 +96,7 @@ def main():
 
 # Declare Maintenance
 maintenance = False  # Set to True to enable maintenance mode
-bypass = True  # Set to True to bypass the login requirement
+bypass = False  # Set to True to bypass the login requirement
 if maintenance == True:
         st.title("Tweet Generator")
         st.write("The application is currently under maintenance. Please try again later.")
