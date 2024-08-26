@@ -1,5 +1,7 @@
 # Tweet Generator
 
+![alt text](https://github.com/vox-hunter/AI-Tweet-Generator/blob/main/Screenshot%202024-08-26%20195306.png?raw=True)
+
 This is a Python-based application that generates tweets based on user input. It uses the Streamlit library to create a web-based user interface.
 
 ## Getting Started
